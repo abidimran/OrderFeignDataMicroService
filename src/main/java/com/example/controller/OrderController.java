@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.OrderFood;
+import com.example.resources.PaymentClient;
 import com.example.service.OrderService;
 
 @RestController
@@ -23,7 +24,7 @@ public class OrderController {
 
 
 	private OrderService orderService;
-
+	
 	public OrderController(OrderService orderService) {
 		this.orderService = orderService;
 	}
@@ -64,6 +65,7 @@ public class OrderController {
 				" OrderQuantity: "+orderFood.getOrderQuantity()+ 
 				" OrderDate: "+orderFood.getOrderDate());
 		orderService.saveOrder(orderFood);
+		
 		List<OrderFood> orders = orderService.getAllOrderDetails();
 		return ResponseEntity.status(HttpStatus.OK).body(orders);
 	}

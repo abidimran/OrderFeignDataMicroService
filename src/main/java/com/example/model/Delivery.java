@@ -4,10 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,16 +20,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class Delivery implements Serializable{
 	
-	private static final long serialVersionUID = -1370089557407175473L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	private static final long serialVersionUID = 3057875979777692592L;
 	private Integer deliveryId;
 	private String deliveryRiderName;
 	private String deliveryStatus;
 	private Date deliveryDate;
+	private Integer orderId;
+	private Integer paymentId;
 	
 	
 

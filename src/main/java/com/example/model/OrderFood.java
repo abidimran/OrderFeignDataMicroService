@@ -3,7 +3,6 @@ package com.example.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +37,8 @@ public class OrderFood implements Serializable{
 	private Date orderDate;
 	private Integer orderQuantity;
 	private Double orderPrice;
+	private Integer paymentId;
+	private Integer deliveryId;
 	
 	
 
