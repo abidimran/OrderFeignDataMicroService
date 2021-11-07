@@ -14,11 +14,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-@Entity
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 //@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class Payment implements Serializable{
@@ -28,7 +24,6 @@ public class Payment implements Serializable{
 	private String paymentStatus;
 	private Date paymentDate;
 	private Integer orderId;
-	private Integer deliveryId;
 	
 	
 	
