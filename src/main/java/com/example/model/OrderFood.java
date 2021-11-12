@@ -32,8 +32,6 @@ public class OrderFood implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer orderId;
 	private String orderName;
-	private String orderDeliveryStatus;
-	private String orderPaymentStatus;
 	private Date orderDate;
 	private Integer orderQuantity;
 	private Double orderPrice;

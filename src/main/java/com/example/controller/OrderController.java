@@ -57,17 +57,13 @@ public class OrderController {
 	}
 
 	@PostMapping("/order")
-	public ResponseEntity<List<OrderFood>> creatingOrder(@RequestBody OrderFood orderFood){
+	public ResponseEntity<OrderFood> creatingOrder(@RequestBody OrderFood orderFood){
 		System.out.println("OrderName: "+orderFood.getOrderName()+ 
 				" OrderPrice: "+orderFood.getOrderPrice()+
-				" OrderDeliveryStatus: "+orderFood.getOrderDeliveryStatus()+ 
-				" OrderPaymentStatus: "+orderFood.getOrderPaymentStatus()+ 
 				" OrderQuantity: "+orderFood.getOrderQuantity()+ 
 				" OrderDate: "+orderFood.getOrderDate());
-		orderService.saveOrder(orderFood);
-		
-		List<OrderFood> orders = orderService.getAllOrderDetails();
-		return ResponseEntity.status(HttpStatus.OK).body(orders);
+		OrderFood food = orderService.saveOrder(orderFood);
+		return ResponseEntity.status(HttpStatus.OK).body(food);
 	}
 
 	@DeleteMapping("/order/{orderId}")

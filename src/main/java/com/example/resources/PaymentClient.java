@@ -9,7 +9,7 @@ import com.example.model.Payment;
 
 import feign.Headers;
 
-@FeignClient(value = "payment-Client", url = "payment.api.url")
+@FeignClient(value = "payment-client", url = "${payment.api.url}")
 @Headers("Content-Type : application/json")
 public interface PaymentClient {
 

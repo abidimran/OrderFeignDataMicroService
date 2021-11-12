@@ -9,7 +9,7 @@ import com.example.model.Delivery;
 
 import feign.Headers;
 
-@FeignClient(value = "delivery-Client", url = "delivery.api.url")
+@FeignClient(value = "delivery-Client", url = "${delivery.api.url}")
 @Headers("Content-Type : application/json")
 public interface DeliveryClient {
 

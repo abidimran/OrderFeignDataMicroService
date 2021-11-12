@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -44,9 +45,9 @@ public class OrderServiceImpl implements OrderService{
 
 	public OrderFood saveOrder(OrderFood order) {
 		OrderFood food = orderRepository.save(order);
-		Payment paymentData = Payment.builder().orderId(food.getOrderId()).paymentDate(new Date()).paymentStatus(INITIAL_PAYMENT_STATUS).build();
+		Payment paymentData = Payment.builder().paymentId(food.getOrderId()).orderId(food.getOrderId()).paymentDate(new Date()).paymentStatus(INITIAL_PAYMENT_STATUS).build();
 		Payment payment = paymentClient.createPayment(paymentData);
-		Delivery deliveryData = Delivery.builder().deliveryDate(new Date()).deliveryRiderName("ABC").deliveryStatus(INITIAL_DELIVERY_STATUS)
+		Delivery deliveryData = Delivery.builder().deliveryId(food.getOrderId()).deliveryDate(new Date()).deliveryRiderName("ABC").deliveryStatus(INITIAL_DELIVERY_STATUS)
 				.orderId(food.getOrderId()).build();
 		Delivery delivery = deliveryClient.createDelivery(deliveryData);
 		food.setDeliveryId(delivery.getDeliveryId());
@@ -57,10 +58,12 @@ public class OrderServiceImpl implements OrderService{
 
 	public OrderFood updateOrder(OrderFood order) {
 		
-		OrderFood food = OrderFood.builder().orderId(order.getOrderId()).orderDate(order.getOrderDate()).orderDeliveryStatus(order.getOrderDeliveryStatus())
-				.orderName(order.getOrderName()).orderPaymentStatus(order.getOrderPaymentStatus()).
-				orderPrice(order.getOrderPrice()).orderQuantity(order.getOrderQuantity())
-				.paymentId(order.getPaymentId()).build();
+		OrderFood food = OrderFood.builder().orderId(order.getOrderId()).orderDate(order.getOrderDate())
+				.orderName(order.getOrderName())
+				.orderPrice(order.getOrderPrice())
+				.orderQuantity(order.getOrderQuantity())
+				.paymentId(order.getPaymentId())
+				.deliveryId(order.getDeliveryId()).build();
 				
 		
 		return orderRepository.save(food);
