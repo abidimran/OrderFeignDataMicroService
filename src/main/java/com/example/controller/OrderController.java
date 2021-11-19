@@ -33,7 +33,7 @@ public class OrderController {
 	public ResponseEntity<String> Ping() {
 
 		System.out.println("Coming for Order Ping");
-		return ResponseEntity.status(HttpStatus.OK).body("OK");
+		return ResponseEntity.status(HttpStatus.OK).body("Order OK");
 	}
 
 	@GetMapping("/all-orders")
